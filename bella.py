@@ -72,8 +72,8 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('sg247938@gmail.com', 'Shivam1319@')
-    server.sendmail('sg247938@gmail.com', to, content)
+    server.login('yourmail@gmail.com', 'password')
+    server.sendmail('yourmail@gmail.com', to, content)
     server.close()
 
 
@@ -189,7 +189,7 @@ class MainThread(QtCore.QThread):
                 try:
                     speak("What should I say?")
                     content = self.takeCommand()
-                    to = "gsheetal774@gmail.com"    
+                    to = "sender@gmail.com"    
                     sendEmail(to, content)
                     speak("Email has been sent!")
                 except Exception as e:
@@ -269,8 +269,8 @@ class MainThread(QtCore.QThread):
 
             elif "calculate" in self.query: 
                 
-                app_id = "UA6V6W-X2PXG24J98"
-                client = wolframalpha.Client("UA6V6W-X2PXG24J98")
+                app_id = "yourAppId"
+                client = wolframalpha.Client(app_id)
                 indx = self.query.lower().split().index('calculate') 
                 self.query = self.query.split()[indx + 1:] 
                 res = client.query(' '.join(self.query)) 
@@ -361,15 +361,15 @@ class MainThread(QtCore.QThread):
 
             elif "send message" in self.query:
                 # You need to create an account on Twilio to use this service
-                account_sid = 'AC82d4360947707beb34f155ae1d19d31b'
-                auth_token = '43b4aa339a59e50e115fd8954580dae3'
+                account_sid = 'your sid'
+                auth_token = 'your token'
                 client = Client(account_sid, auth_token)
 
                 message = client.messages \
                 .create(
                     body="Join Earth's mightiest heroes. Like Kevin Bacon.",
                     from_='+18707298456',
-                    to='7014217098'
+                    to='xxxxxxxxx'
                 )
 
                 print(message.sid)
@@ -379,7 +379,7 @@ class MainThread(QtCore.QThread):
                 
                 # Use the same API key 
                 # that we have generated earlier
-                client = wolframalpha.Client("UA6V6W-X2PXG24J98")
+                client = wolframalpha.Client("your app id")
                 res = client.query(self.query)
                 
                 try:
@@ -424,13 +424,13 @@ class MainThread(QtCore.QThread):
 
             elif "weather" in self.query:
              
-                # Google Open weather website
-                # to get API of Open weather 
-                # api_key = "6eee755a887428d041cdef4103794fac"
-                # base_url = "http://api.openweapip thermap.org / data / 2.5 / weather?"
-                # speak(" City name ")
-                # print("City name : ")
-                # city_name = self.takeCommand()
+                Google Open weather website
+                to get API of Open weather 
+                api_key = "api_key"
+                base_url = "http://api.openweapip thermap.org / data / 2.5 / weather?"
+                speak(" City name ")
+                print("City name : ")
+                city_name = self.takeCommand()
                 complete_url = 'api.openweathermap.org/data/2.5/weather?q={jaipur}&appid={6eee755a887428d041cdef4103794fac}'
 
                 response = requests.get(complete_url) 
